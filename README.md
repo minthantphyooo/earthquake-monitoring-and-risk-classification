@@ -1,261 +1,129 @@
-# 🌍 Earthquake Risk Assessment App with Real Machine Learning
+\# 🌍 Earthquake Risk Assessment App
 
-A Flutter application that uses **real machine learning** trained on **USGS Earthquake Catalog data** to assess earthquake risk based on user location.
+A Flutter mobile application that uses **USGS earthquake data and machine learning** to assess earthquake risk based on the user's location.
 
-## 🚀 Features
+## 📱 Overview
 
-### ✅ **Real Machine Learning**
-- **Trained on 13,892 real earthquakes** from USGS API
-- **Random Forest Classifier** with 99.9% accuracy
-- **Feature engineering** based on geological data
-- **Confidence scoring** for predictions
+The application collects earthquake data from the **USGS Earthquake Catalog API** and uses a **Random Forest machine learning model** to classify locations into:
 
-### ✅ **Location-Based Risk Assessment**
-- **GPS location detection** with permission handling
-- **Real-time risk classification**: Low, Moderate, High
-- **Fault line proximity analysis**
-- **Historical earthquake data integration**
+* 🟢 Low Risk
+* 🟡 Moderate Risk
+* 🔴 High Risk
 
-### ✅ **Beautiful UI/UX**
-- **Modern Material Design** interface
-- **Risk visualization** with color-coded indicators
-- **Confidence breakdown** with probability bars
-- **Responsive design** for all screen sizes
+Users can view recent earthquake information, check their location's risk level, and explore earthquake activity on a map.
 
-## 🧠 Machine Learning Implementation
+## ✨ Features
 
-### **Data Source**
-- **USGS Earthquake Catalog API** (last 365 days)
-- **13,892 significant earthquakes** (magnitude 4.0+)
-- **Real geological features**: latitude, longitude, depth, magnitude
+* 📍 GPS-based location detection
+* 🌍 Earthquake data from the USGS API
+* 🤖 Random Forest machine learning model
+* 📊 Low, Moderate and High risk classification
+* 🗺️ Interactive earthquake map
+* 📋 Recent earthquake information
+* 📚 Earthquake safety and educational information
+* 📱 Responsive Flutter interface
 
-### **ML Model Architecture**
-```python
-# Random Forest Classifier
-model = RandomForestClassifier(
-    n_estimators=100,
-    max_depth=10,
-    random_state=42,
-    class_weight='balanced'
-)
-```
+## 🧠 Machine Learning
 
-### **Features Used**
-1. **Latitude** - Geographic position
-2. **Longitude** - Geographic position  
-3. **Depth** - Earthquake depth (km)
-4. **Magnitude** - Earthquake strength
-5. **Distance to Fault** - Proximity to major fault lines
+The model was trained using earthquake data collected from the **USGS Earthquake Catalog**.
 
-### **Risk Classification**
-- **Low Risk**: Minimal seismic activity
-- **Moderate Risk**: Some seismic activity
-- **High Risk**: Significant seismic activity
+**Model:** Random Forest Classifier
 
-## 📱 App Structure
+**Features include:**
 
-```
-lib/
-├── main.dart                    # App entry point
-├── services/
-│   ├── location_service.dart    # GPS location handling
-│   ├── real_ml_service.dart     # ML prediction engine
-│   └── earthquake_service.dart  # USGS data fetching
-├── screens/
-│   ├── risk_assessment_screen.dart  # Main ML interface
-│   ├── earthquake_list_screen.dart  # Earthquake list
-│   └── map_screen.dart             # Map visualization
-└── models/
-    └── earthquake.dart             # Data models
-```
+* Latitude
+* Longitude
+* Depth
+* Magnitude
+* Distance to major fault areas
 
-## 🛠️ Technical Stack
+The machine learning pipeline was developed in **Python using Scikit-learn, Pandas and NumPy**.
 
-### **Frontend**
-- **Flutter** - Cross-platform UI framework
-- **Dart** - Programming language
-- **Material Design** - UI components
+> **Note:** The model evaluation results depend on the dataset and classification method used during training.
 
-### **Backend/ML**
-- **Python** - ML pipeline
-- **Scikit-learn** - Machine learning library
-- **Pandas** - Data manipulation
-- **USGS API** - Earthquake data source
+## 🛠️ Technologies
 
-### **Dependencies**
-```yaml
-dependencies:
-  flutter: sdk: flutter
-  geolocator: ^10.1.0          # Location services
-  permission_handler: ^11.0.1  # Permissions
-  http: ^1.1.0                 # API calls
-  google_maps_flutter: ^2.5.3  # Maps
+**Mobile App**
+
+* Flutter
+* Dart
+* Google Maps
+
+**Machine Learning**
+
+* Python
+* Scikit-learn
+* Pandas
+* NumPy
+
+**Data**
+
+* USGS Earthquake Catalog API
+
+## 🔄 How It Works
+
+```text
+USGS Earthquake Data
+        ↓
+Data Processing
+        ↓
+Machine Learning Model
+        ↓
+Risk Classification
+        ↓
+Flutter Mobile App
+        ↓
+User Risk Result
 ```
 
 ## 🚀 Getting Started
 
-### **Prerequisites**
-- Flutter SDK (3.0+)
-- Python 3.9+
-- Internet connection for USGS data
+### Requirements
 
-### **Installation**
+* Flutter SDK
+* Dart
+* Python 3.9+
+* Internet connection
 
-1. **Clone the repository**
+### Run the project
+
 ```bash
 git clone <repository-url>
 cd earthquake
+
+flutter pub get
+flutter run
 ```
 
-2. **Install Python dependencies**
+If you want to retrain the machine learning model:
+
 ```bash
 pip3 install -r requirements.txt
-```
-
-3. **Train the ML model**
-```bash
 python3 ml_earthquake_risk.py
 ```
 
-4. **Install Flutter dependencies**
-```bash
-flutter pub get
-```
+## 🎯 Project Purpose
 
-5. **Run the app**
-```bash
-flutter run -d chrome
-```
+This project was developed as an **MSc Computing project** to explore the use of **machine learning, location services and real-world earthquake data** in a mobile application.
 
-## 📊 ML Model Performance
+## 🔮 Future Improvements
 
-### **Training Results**
-```
-Model accuracy: 0.999
+* Historical earthquake risk trends
+* Improved machine learning models
+* More detailed geological data
+* Emergency preparedness information
+* Improved risk visualisation
 
-Classification Report:
-              precision    recall  f1-score   support
+## 👨‍💻 Author
 
-         Low       1.00      1.00      1.00      2694
-    Moderate       0.98      0.99      0.98        82
-        High       1.00      0.33      0.50         3
+**Min Thant Phyo**
 
-    accuracy                           1.00      2779
-   macro avg       0.99      0.77      0.83      2779
-weighted avg       1.00      1.00      1.00      2779
-```
+MSc Computing Graduate
 
-### **Sample Predictions**
-- **San Francisco**: Low Risk (Confidence: 100%)
-- **Tokyo**: Moderate Risk (Confidence: 99%)
-- **London**: Low Risk (Confidence: 100%)
-- **New York**: Low Risk (Confidence: 99%)
-- **Sydney**: Low Risk (Confidence: 100%)
-
-## 🔬 How It Works
-
-### **1. Data Collection**
-```python
-# Fetch real earthquake data from USGS
-url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
-params = {
-    'format': 'geojson',
-    'starttime': start_time,
-    'endtime': end_time,
-    'minmagnitude': 4.0
-}
-```
-
-### **2. Feature Engineering**
-```python
-# Calculate distance to major fault lines
-fault_lines = [
-    {'name': 'San Andreas', 'lat': 36.7783, 'lng': -119.4179},
-    {'name': 'Japan Trench', 'lat': 36.2048, 'lng': 138.2529},
-    # ... more fault lines
-]
-```
-
-### **3. Model Training**
-```python
-# Train Random Forest on real data
-X_train, X_test, y_train, y_test = train_test_split(
-    features, labels, test_size=0.2, random_state=42
-)
-model.fit(X_train_scaled, y_train)
-```
-
-### **4. Real-time Prediction**
-```dart
-// Get user location
-Position position = await LocationService.getCurrentLocation();
-
-// Make ML prediction
-Map<String, dynamic> result = await RealMLService.predictRisk(position);
-
-// Display results
-RiskLevel riskLevel = result['risk_level'];
-double confidence = result['confidence'];
-```
-
-## 🎯 Key Features
-
-### **Real ML Benefits**
-- ✅ **Trained on real data** - 13,892 USGS earthquakes
-- ✅ **High accuracy** - 99.9% model performance
-- ✅ **Feature engineering** - Geological insights
-- ✅ **Confidence scoring** - Uncertainty quantification
-
-### **User Experience**
-- ✅ **One-tap location** - Easy GPS access
-- ✅ **Instant results** - Real-time predictions
-- ✅ **Visual feedback** - Color-coded risk levels
-- ✅ **Detailed breakdown** - Probability distributions
-
-## 🔧 Customization
-
-### **Adding New Fault Lines**
-```dart
-List<Map<String, double>> faultLines = [
-  {'lat': 36.7783, 'lng': -119.4179}, // San Andreas
-  {'lat': 36.2048, 'lng': 138.2529},  // Japan Trench
-  // Add your fault line here
-  {'lat': YOUR_LAT, 'lng': YOUR_LNG},  // New fault
-];
-```
-
-### **Modifying Risk Rules**
-```dart
-static const List<Map<String, dynamic>> _decisionRules = [
-  // Add your custom rules
-  {'condition': 'YOUR_CONDITION', 'risk': RiskLevel.high, 'confidence': 0.95},
-];
-```
-
-## 📈 Future Enhancements
-
-### **Planned Features**
-- [ ] **Real-time earthquake alerts**
-- [ ] **Historical risk trends**
-- [ ] **Building code recommendations**
-- [ ] **Emergency preparedness tips**
-- [ ] **Community risk sharing**
-
-### **ML Improvements**
-- [ ] **Deep learning models** (Neural Networks)
-- [ ] **Time series analysis**
-- [ ] **Ensemble methods**
-- [ ] **Real-time model updates**
-
-
-
-## 🙏 Acknowledgments
-
-- **USGS** for providing earthquake data
-- **Scikit-learn** for ML algorithms
-- **Flutter** for the UI framework
-- **Open source community** for tools and libraries
+* GitHub: https://github.com/mewyyuu
+* LinkedIn: https://www.linkedin.com/in/min-thant-phyo-089911274/
+* Email: [minthantphyo123@gmail.com](mailto:minthantphyo123@gmail.com)
 
 ---
 
-**Built with ❤️ using real machine learning and USGS data**
+⭐ If you find this project interesting, feel free to explore the repository.
