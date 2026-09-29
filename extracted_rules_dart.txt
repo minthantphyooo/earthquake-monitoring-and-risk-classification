@@ -1,0 +1,13 @@
+// Extracted rules from your trained ML model
+// Copy this into your real_ml_service.dart file
+
+static const List<Map<String, dynamic>> _extractedRules = [
+];
+
+// Usage in your _matchesCondition function:
+// Add these cases to your switch statement:
+
+
+// Example condition logic:
+// case 'latitude <= 0.79 AND longitude <= 1.08':
+//   return latitude <= 0.79 && longitude <= 1.08;
